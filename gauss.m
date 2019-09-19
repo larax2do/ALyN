@@ -25,21 +25,25 @@
 
 #Convertir la matriz en una matriz triangular superior, para resolver el sistema
 #x es un vector con los resultados
-#La funcion recibe una Matriz  A y un vector b
+#La funcion recibe una Matriz  A aumentada en b [Ab]
 #Ax=b
 
-function x = gauss (A, b)
-  n=length(b);
-  if columns(A)==rows(A) & rows(A)==length(b)
-    for k=1:n
-      for i=k+1:n
-        m=-(A(i,k)/A(k,k));
-        for j=1:n
-          A(i,j)=A(i,j)+m*A(k,j);
-          b(j)=b(j)+m*b(j);
-        endfor
+function x = gauss (A)
+  [n r]=size(A);
+  m=eye(n);
+  for k=1:n-1
+    for i=k+1:n
+      m(i,k)=A(i,k)/(A(k,k));
+      for j=k+1:n+1
+        A(i,j)=-m(i,k)*A(k,j)+A(i,j);
       endfor
+      A(i,k)=0;
     endfor
-  endif
-  x=A
+  endfor
+  U=A(1:n,1:n)
+  L=m
+  L*U
+  %%%%%%%%%%% Solucion usando regresion
+  
+  x=sustitucionRegresivaSup(A(1:n,1:n),A(1:n,r));
 endfunction
