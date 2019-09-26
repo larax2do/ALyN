@@ -29,7 +29,7 @@
 #Ax=b
 function x = sustitucionRegresivaSup (A, b)
   if columns(A)==rows(A) & rows(A)==length(b)
-    n=length(b)
+    n=length(b);
     x(n)=b(n)/A(n,n);
     for i=n-1:-1:1
       x(i)=b(i);

@@ -40,11 +40,11 @@ function [L U] = gauss (A)
       A(i,k)=0;
     endfor
   endfor
-  A;
+  %A;
   U=A(1:n,1:n);
   L=m;
-  L*U;
+  %L*U;
   %%%%%%%%%%% Solucion usando regresion
   
-  x=sustitucionRegresivaSup(A(1:n,1:n),A(1:n,r));
+  %x=sustitucionRegresivaSup(A(1:n,1:n),A(1:n,r));
 endfunction

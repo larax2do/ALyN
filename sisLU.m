@@ -23,8 +23,8 @@
 ## Author: csunsa-11 <csunsa11@csunsa-pc>
 ## Created: 2019-09-26
 
-function X = sisLU (A, B)
-  [L U]=gauss(A)
+function x = sisLU (A, B)
+  [L U]=gauss(A);
   y=sustitucionRegresivaInf (L, B)
   x=sustitucionRegresivaSup (U, y)
 endfunction
